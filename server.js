@@ -1,7 +1,7 @@
 require("dotenv").config();
 var express = require("express");
 var bodyParser = require("body-parser");
-var exphbs = require("express-handlebars");
+// var exphbs = require("express-handlebars");
 var passport = require("passport");
 var session = require("express-session");
 require("dotenv").load();
@@ -24,14 +24,14 @@ app.use(passport.initialize());
 
 app.use(passport.session()); // persistent login sessions
 // Handlebars
-app.engine(
-  "handlebars",
-  exphbs({
-    defaultLayout: "main",
-    extname: ".handlebars"
-  })
-);
-app.set("view engine", "handlebars");
+// app.engine(
+//   "handlebars",
+//   exphbs({
+//     defaultLayout: "main",
+//     extname: ".handlebars"
+//   })
+// );
+// app.set("view engine", "handlebars");`
 var models = require("./models");
 // Routes
 require("./routes/apiRoutes")(app, passport);
