@@ -125,11 +125,11 @@ export default class Example extends React.Component {
     return (
       <Form>
         <FormGroup>
-          <Label for="userName">User Name</Label>
+          <Label for="userName">  User Name: </Label>
           <Input type="text" name="username" id="signinusername" placeholder="Enter User Name" />
         </FormGroup>
         <FormGroup>
-          <Label for="password">Password</Label>
+          <Label for="password">  Password: </Label>
           <Input type="password" name="password" id="signinpassword" placeholder="Enter Password" />
         </FormGroup>
         <Button color="primary" id="signinbtn">Submit</Button>
