@@ -1,38 +1,37 @@
 import React, { Component } from "react";
-// import DeleteBtn from "../../components/DeleteBtn";
+import DeleteBtn from "../../components/DeleteBtn";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
-// import { List, ListItem } from "../../components/List";
-// import { Input, TextArea, FormBtn } from "../../components/Form";
-import { Table, TableItem, TableHead } from "../../components/Table";
+import { List, ListItem } from "../../components/List";
+import { Input, TextArea, FormBtn } from "../../components/Form";
 
-class Leaderboard extends Component {
-    state = {
-        user: {}
-    };
-    
-
+class Books extends Component {
+  state = {
+    books: [],
+    title: "",
+    author: "",
+    synopsis: ""
+  };
 
   componentDidMount() {
-    this.loadUsers();
+    this.loadBooks();
   }
 
-  loadUsers = () => {
-    API.getUsers()
+  loadBooks = () => {
+    API.getBooks()
       .then(res =>
-        this.setState({ users: res.data })
-        // this.setState({ picks: res.data, title: "", author: "", synopsis: "" })
+        this.setState({ books: res.data, title: "", author: "", synopsis: "" })
       )
       .catch(err => console.log(err));
   };
 
-  // deletePick = id => {
-  //   API.deletePick(id)
-  //     .then(res => this.loadPicks())
-  //     .catch(err => console.log(err));
-  // };
+  deleteBook = id => {
+    API.deleteBook(id)
+      .then(res => this.loadBooks())
+      .catch(err => console.log(err));
+  };
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -43,11 +42,13 @@ class Leaderboard extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.user) {
-      API.saveUser({
-        user: this.state.user
+    if (this.state.title && this.state.author) {
+      API.saveBook({
+        title: this.state.title,
+        author: this.state.author,
+        synopsis: this.state.synopsis
       })
-        .then(res => this.loadUsers())
+        .then(res => this.loadBooks())
         .catch(err => console.log(err));
     }
   };
@@ -56,7 +57,7 @@ class Leaderboard extends Component {
     return (
       <Container fluid>
         <Row>
-          {/* <Col size="md-6">
+          <Col size="md-6">
             <Jumbotron>
               <h1>What Books Should I Read?</h1>
             </Jumbotron>
@@ -86,27 +87,26 @@ class Leaderboard extends Component {
                 Submit Book
               </FormBtn>
             </form>
-          </Col> */}
+          </Col>
           <Col size="md-6 sm-12">
             <Jumbotron>
-              <h1>Leaderboard</h1>
+              <h1>Books On My List</h1>
             </Jumbotron>
-            {this.state.users.length ? (
-              <Table>
-                <TableHead />
-                {this.state.userss.map(user => (
-                  <TableItem key={user._id}>
-                    <Link to={"/users/" + user._id}>
+            {this.state.books.length ? (
+              <List>
+                {this.state.books.map(book => (
+                  <ListItem key={book._id}>
+                    <Link to={"/books/" + book._id}>
                       <strong>
-                        {user.firstname + " " + user.lastname} 
+                        {book.title} by {book.author}
                       </strong>
                     </Link>
-                    {/* <DeleteBtn onClick={() => this.deleteBook(book._id)} /> */}
-                  </TableItem>
+                    <DeleteBtn onClick={() => this.deleteBook(book._id)} />
+                  </ListItem>
                 ))}
-              </Table>
+              </List>
             ) : (
-              <h3>No Users to Display</h3>
+              <h3>No Results to Display</h3>
             )}
           </Col>
         </Row>
@@ -115,4 +115,4 @@ class Leaderboard extends Component {
   }
 }
 
-export default Leaderboard;
+export default Books;
