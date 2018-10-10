@@ -1,15 +1,16 @@
-require("dotenv").config();
-var express = require("express");
-var bodyParser = require("body-parser");
-// var exphbs = require("express-handlebars");
-var passport = require("passport");
-var session = require("express-session");
-require("dotenv").load();
+// require("dotenv").config();
+const express = require("express");
+const bodyParser = require("body-parser");
+// const exphbs = require("express-handlebars");
+const mongoose = require("mongoose");
+const routes = require("./routes");
+const app = express();
+const PORT = process.env.PORT || 3001;
+const passport = require("passport");
+const session = require("express-session");
+// require("dotenv").load();
 
-var db = require("./models");
-
-var app = express();
-var PORT = process.env.PORT || 3000;
+const db = require("./models");
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -23,23 +24,21 @@ app.use(
 app.use(passport.initialize());
 
 app.use(passport.session()); // persistent login sessions
-// Handlebars
-// app.engine(
-//   "handlebars",
-//   exphbs({
-//     defaultLayout: "main",
-//     extname: ".handlebars"
-//   })
-// );
-// app.set("view engine", "handlebars");`
-var models = require("./models");
-// Routes
-require("./routes/apiRoutes")(app, passport);
-require("./routes/htmlRoutes")(app);
-//passport strats
-require("./config/passport/passport")(passport, models.user);
-//
-var syncOptions = { force: false };
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+
+app.use(routes);
+
+// const models = require("./models");
+// // Routes
+// require("./routes/apiRoutes")(app, passport);
+// require("./routes/htmlRoutes")(app);
+// //passport strats
+// require("./config/passport/passport")(passport, models.user);
+// //
+// const syncOptions = { force: false };
 
 // // If running a test, set syncOptions.force to true
 // // clearing the `testdb`

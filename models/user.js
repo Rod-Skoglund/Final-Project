@@ -1,11 +1,14 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const uniqueValidator = require("mongoose-unique-validator");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcrypt-nodejs");
 
 const UserSchema = new Schema({
+  firstName: { type: String },
+  lastName: { type: String },
   username: { type: String, required: true, unique: true },
-  passwordHash: { type: String, required: true }
+  passwordHash: { type: String, required: true },
+  active: { type: Boolean }
 });
 
 UserSchema.plugin(uniqueValidator);
