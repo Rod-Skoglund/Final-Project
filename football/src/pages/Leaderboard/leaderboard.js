@@ -91,7 +91,7 @@ class Leaderboard extends Component {
             <Jumbotron>
               <h1>Leaderboard</h1>
             </Jumbotron>
-            {this.state.users.length ? (
+            {this.state.user.length ? (
               <Table>
                 <TableHead />
                 {this.state.users.map(user => (
