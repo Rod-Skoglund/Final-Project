@@ -4,13 +4,16 @@ import Leaderboard from "./pages/Leaderboard/Leaderboard";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import SignIn from "./pages/SignIn";
+import './App.css';
 
 const App = () => (
   <Router>
     <div>
       <Nav />
       <Switch>
-        <Route exact path="/" component={Picks} />
+        <Route exact path="/" component={SignIn} />
+        <Route exact path="/signin" component={SignIn} />
         <Route exact path="/leaderboard" component={Leaderboard} />
         <Route exact path="/picks/:id" component={Picks} />
         <Route component={NoMatch} />

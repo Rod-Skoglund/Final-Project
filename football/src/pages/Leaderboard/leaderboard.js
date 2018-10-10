@@ -94,7 +94,7 @@ class Leaderboard extends Component {
             {this.state.users.length ? (
               <Table>
                 <TableHead />
-                {this.state.userss.map(user => (
+                {this.state.users.map(user => (
                   <TableItem key={user._id}>
                     <Link to={"/users/" + user._id}>
                       <strong>
