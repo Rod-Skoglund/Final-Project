@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
 const db = require("../models");
 
-// This file empties the Books collection and inserts the books below
+// collections: users, games, picks, teams, userScore
+//
+
 
 mongoose.connect(
   process.env.MONGODB_URI ||
