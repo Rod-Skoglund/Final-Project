@@ -1,6 +1,6 @@
 import React from "react";
 import Picks from "./pages/MakePicks/Picks";
-import Leaderboard from "./pages/Leaderboard/Leaderboard";
+import Leaderboard from "./pages/Leaderboard/leaderboard";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
@@ -24,3 +24,4 @@ const App = () => (
 );
 
 export default App;
+

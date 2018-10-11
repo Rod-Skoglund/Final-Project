@@ -1,38 +1,29 @@
 import axios from "axios";
 
 export default {
-  // Gets all picks
+  // Gets all Picks
   getPicks: function() {
     return axios.get("/api/picks");
   },
-  // Gets the pick with the given id
+  // Gets the Picks with the given id
   getPick: function(id) {
-    return axios.get("/api/picks/" + id);
+    return axios.get("/api/pick/" + id);
   },
-  // Deletes the pick with the given id
-  deletePick: function(id) {
-    return axios.delete("/api/picks/" + id);
-  },
-  // Saves a pick to the database
+  // Saves a Picks to the database
   savePick: function(pickData) {
-    return axios.post("/api/picks", pickData);
+    return axios.post("/api/pick", pickData);
   },
-
-  // Gets all users
+  // Gets all Users
   getUsers: function() {
     return axios.get("/api/users");
   },
-  // Gets the user with the given id
-  getUser: function(id) {
-    return axios.get("/api/users/" + id);
+  // Gets all User with the given username
+  getUser: function(username) {
+    return axios.get("/api/users/" + username);
   },
-  // Deletes the user with the given id
-  deleteUser: function(id) {
-    return axios.delete("/api/users/" + id);
-  },
-  // Saves a user to the database
+  // Saves a Users to the database
   saveUser: function(userData) {
-    return axios.post("/api/users", userData);
+    return axios.post("/api/user", userData);
   }
 
 };
