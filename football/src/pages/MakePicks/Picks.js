@@ -91,7 +91,7 @@ class Picks extends Component {
             <Jumbotron>
               <h1>My Picks</h1>
             </Jumbotron>
-            {this.state.picks.length ? (
+            {this.state.pick.length ? (
               <Table>
                 <TableHead />
                 {this.state.picks.map(pick => (
