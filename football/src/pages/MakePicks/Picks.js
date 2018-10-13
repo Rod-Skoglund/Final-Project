@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 // import { List, ListItem } from "../../components/List";
 // import { Input, TextArea, FormBtn } from "../../components/Form";
-import { Table, TableItem, TableHead } from "../../components/Table";
+import { Table, TableItem, TdItem, ThItem, TableHead, TableBody } from "../../components/Table";
 
 class Picks extends Component {
     state = {
@@ -53,60 +53,50 @@ class Picks extends Component {
   };
 
   render() {
+
+    const pickData = [
+      { id: "1", homeTeam: "Chiefs", awayTeam: "New England", pick: "Chiefs" },
+      { id: "2", homeTeam: "Chiefs", awayTeam: "Jaguars",   pick: "Chiefs" },
+      { id: "3", homeTeam: "Chiefs", awayTeam: "Broncos",   pick: "Chiefs" },
+      { id: "4", homeTeam: "Chiefs", awayTeam: "Chargers",  pick: "Chiefs" }
+    ];  
+
+    const tableHd = [
+      "Game", 
+      "Home Team", 
+      "Away Team", 
+      "Pick"
+    ]
+
     return (
       <Container fluid>
         <Row>
-          {/* <Col size="md-6">
+          <Col size="md-6">
             <Jumbotron>
-              <h1>What Books Should I Read?</h1>
+              <h1>Weekly Picks</h1>
             </Jumbotron>
-            <form>
-              <Input
-                value={this.state.title}
-                onChange={this.handleInputChange}
-                name="title"
-                placeholder="Title (required)"
-              />
-              <Input
-                value={this.state.author}
-                onChange={this.handleInputChange}
-                name="author"
-                placeholder="Author (required)"
-              />
-              <TextArea
-                value={this.state.synopsis}
-                onChange={this.handleInputChange}
-                name="synopsis"
-                placeholder="Synopsis (Optional)"
-              />
-              <FormBtn
-                disabled={!(this.state.author && this.state.title)}
-                onClick={this.handleFormSubmit}
-              >
-                Submit Book
-              </FormBtn>
-            </form>
-          </Col> */}
-          <Col size="md-6 sm-12">
-            <Jumbotron>
-              <h1>My Picks</h1>
-            </Jumbotron>
-            {this.state.pick.length ? (
+            {pickData.length ? (
               <Table>
-                <TableHead />
-                {this.state.picks.map(pick => (
-                  <TableItem key={pick._id}>
-                    <Link to={"/picks/" + pick._id}>
-                      <strong>
-                        {pick.name}
-                      </strong>
-                    </Link>
-                    {/* <DeleteBtn onClick={() => this.deleteBook(book._id)} /> */}
-                  </TableItem>
-                ))}
+                <TableHead>
+                  <tr className="table table-striped">
+                    {tableHd.map(tableHd => (
+                      <ThItem key={tableHd} value={tableHd} />
+                    ))}
+                  </tr>
+                </TableHead>
+                <TableBody>
+                  {pickData.map(pickData => (
+                    <tr className="table table-striped">
+                      <ThItem key={pickData.id} value={pickData.id} /> 
+                      <TdItem key={pickData.id} value={pickData.homeTeam} />
+                      <TdItem key={pickData.id} value={pickData.awayTeam} />
+                      <TdItem key={pickData.id} value={pickData.pick} />
+                    </tr>
+                  ))}
+                </TableBody>
               </Table>
             ) : (
-              <h3>No Picks to Display</h3>
+              <h3>No Users to Display</h3>
             )}
           </Col>
         </Row>
@@ -114,5 +104,37 @@ class Picks extends Component {
     );
   }
 }
+
+//   render() {
+//     return (
+//       <Container fluid>
+//         <Row>
+//           <Col size="md-6 sm-12">
+//             <Jumbotron>
+//               <h1>My Picks</h1>
+//             </Jumbotron>
+//             {this.state.pick.length ? (
+//               <Table>
+//                 <TableHead />
+//                 {this.state.picks.map(pick => (
+//                   <TableItem key={pick._id}>
+//                     <Link to={"/picks/" + pick._id}>
+//                       <strong>
+//                         {pick.name}
+//                       </strong>
+//                     </Link>
+//                     {/* <DeleteBtn onClick={() => this.deleteBook(book._id)} /> */}
+//                   </TableItem>
+//                 ))}
+//               </Table>
+//             ) : (
+//               <h3>No Picks to Display</h3>
+//             )}
+//           </Col>
+//         </Row>
+//       </Container>
+//     );
+//   }
+// }
 
 export default Picks;

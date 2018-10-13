@@ -1,3 +1,7 @@
 module.exports = {
-  User: require("./user.js")
-};
+  User: require("./User"),
+  Teams: require("./Teams"),
+  UserScore: require("./UserScore"),
+  Games: require("./Games"),
+  Picks: require("./Picks")
+ };
