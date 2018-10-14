@@ -1,7 +1,10 @@
 const router = require("express").Router();
-const userRoutes = require("./users");
+const auth=require("./auth");
+// unit data routes
 
-// User routes
-router.use("/users", userRoutes);
-
-module.exports = router;
+module.exports=function(app,passport){
+  //app.use(
+    require("./auth")(app,passport)
+    
+  //);
+}

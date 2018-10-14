@@ -29,7 +29,7 @@ const teamsSeed = [
   { city: "Houston",       teamName: "Texans",     nickname: "HOU" },
   { city: "Indianapolis",  teamName: "Colts",      nickname: "IND" },
   { city: "Jacksonville",  teamName: "Jaguars",    nickname: "JAX" },
-  { city: "Kansas city",   teamName: "Chiefs",     nickname: "KC" },
+  { city: "Kansas City",   teamName: "Chiefs",     nickname: "KC" },
   { city: "Los Angeles",   teamName: "Rams",       nickname: "LAR" },
   { city: "Los Angeles",   teamName: "Chargers",   nickname: "LAC" },
   { city: "Miami",         teamName: "Dolphins",   nickname: "MIA" },

@@ -1,6 +1,7 @@
 import React from "react";
 import Picks from "./pages/MakePicks/Picks";
 import Leaderboard from "./pages/Leaderboard/leaderboard";
+import SignUp from "./pages/SignUp/signup";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
@@ -13,6 +14,7 @@ const App = () => (
         <Route exact path="/" component={Picks} />
         <Route exact path="/leaderboard" component={Leaderboard} />
         <Route exact path="/picks/:id" component={Picks} />
+        <Route exact path="/signup" component={SignUp} />
         <Route component={NoMatch} />
       </Switch>
 

@@ -23,6 +23,11 @@ router.route("/")//matches with /api/users
 // app.get("/api/hello",(req,res)=>{
 //   res.send({express:"hello from express"})
 // });
+router.route("/")//matches with /api/users
+  .post(usersController.create);//sends all faction data
+// app.get("/api/hello",(req,res)=>{
+//   res.send({express:"hello from express"})
+// });
 router.route("/api/hello")
   .get((req,res)=>res.send({express:"hello from express"}))
 //router.route("/:")
