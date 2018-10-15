@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 // import { List, ListItem } from "../../components/List";
 // import { Input, TextArea, FormBtn } from "../../components/Form";
-import { Table, TableItem, TdItem, ThItem, TableHead, TableBody } from "../../components/Table";
+import { Table, TableItem, TdItem, ThItem, TdButton, TableHead, TableBody, SelectPoints } from "../../components/Table";
 
 class Picks extends Component {
     state = {
@@ -68,17 +68,37 @@ class Picks extends Component {
       "Pick"
     ]
 
+    const weeks = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
+
+    const games = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+
     return (
       <Container fluid>
         <Row>
-          <Col size="md-6">
+          <div className="col-3"></div>
+          <Col size="md">
             <Jumbotron>
               <h1>Weekly Picks</h1>
             </Jumbotron>
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Game Week:</label>
+              </div>
+              <select class="custom-select" id="inputGroupSelect01">
+                <option selected>Choose...</option>
+                {weeks.map(weeks => (
+                  <option value={weeks} onChange={this.handleInputChange}>
+                    {weeks}
+                  </option>
+                ))}
+              </select>
+            </div>
+
             {pickData.length ? (
               <Table>
                 <TableHead>
-                  <tr className="table table-striped">
+                  <tr>
                     {tableHd.map(tableHd => (
                       <ThItem key={tableHd} value={tableHd} />
                     ))}
@@ -86,11 +106,43 @@ class Picks extends Component {
                 </TableHead>
                 <TableBody>
                   {pickData.map(pickData => (
-                    <tr className="table table-striped">
-                      <ThItem key={pickData.id} value={pickData.id} /> 
-                      <TdItem key={pickData.id} value={pickData.homeTeam} />
-                      <TdItem key={pickData.id} value={pickData.awayTeam} />
-                      <TdItem key={pickData.id} value={pickData.pick} />
+                    <tr>
+                      <ThItem key={pickData.id} value={pickData.id}>
+                        <SelectPoints key={pickData.id} onChange={this.handleInputChange}>
+                          {pickData.id}
+                        </SelectPoints>
+                      </ThItem> 
+
+                      {/* <TdItem 
+                        key={pickData.id} 
+                        value={pickData.homeTeam} 
+                      />
+                      <TdItem 
+                        key={pickData.id} 
+                        value={pickData.awayTeam} 
+                      /> */}
+
+                      <TdButton 
+                        key={pickData.id} 
+                        value={pickData.homeTeam} 
+                        onClick={this.handleFormSubmit}
+                      />
+                      <TdButton 
+                        key={pickData.id} 
+                        value={pickData.awayTeam} 
+                        onClick={this.handleFormSubmit}
+                      />
+
+                      {/* <TdItem 
+                        key={pickData.id} 
+                        value={pickData.pick} 
+                      /> */}
+
+                      <TdItem 
+                        key={pickData.id} 
+                        value={pickData.pick}
+                      />
+
                     </tr>
                   ))}
                 </TableBody>
@@ -99,6 +151,7 @@ class Picks extends Component {
               <h3>No Users to Display</h3>
             )}
           </Col>
+          <div className="col-3"></div>
         </Row>
       </Container>
     );

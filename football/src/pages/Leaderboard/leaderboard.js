@@ -76,14 +76,15 @@ class Leaderboard extends Component {
     return (
       <Container fluid>
         <Row>
-          <Col size="md-6">
+          <div className="col-3"></div>
+          <Col size="md">
             <Jumbotron>
               <h1>Leaderboard</h1>
             </Jumbotron>
             {userData.length ? (
               <Table>
                 <TableHead>
-                  <tr className="table table-striped">
+                  <tr>
                     {tableHd.map(tableHd => (
                       <ThItem key={tableHd} value={tableHd} />
                     ))}
@@ -91,7 +92,7 @@ class Leaderboard extends Component {
                 </TableHead>
                 <TableBody>
                   {userData.map(userData => (
-                    <tr className="table table-striped">
+                    <tr>
                       <ThItem key={userData.id} value={userData.id} /> 
                       <TdItem key={userData.id} value={userData.firstName + " " + userData.lastName} />
                       <TdItem key={userData.id} value={userData.score} />
@@ -103,6 +104,7 @@ class Leaderboard extends Component {
               <h3>No Users to Display</h3>
             )}
           </Col>
+          <div className="col-3"></div>
         </Row>
       </Container>
     );

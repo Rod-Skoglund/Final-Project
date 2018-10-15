@@ -4,7 +4,7 @@ import React from "react";
 
 export const Table = ({ children }) => {
   return (
-    <table className="table table-striped table-bordered">
+    <table className="table table-striped table-bordered table-hover">
         {children}
     </table>
   );

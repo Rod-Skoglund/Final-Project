@@ -1,7 +1,7 @@
 import React from "react";
 
 export const TableHead = props => (
-    <thead class="thead-dark"> 
+    <thead className="thead-dark"> 
       {props.children}
     </thead>
 );

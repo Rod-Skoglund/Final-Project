@@ -1,7 +1,7 @@
 import React from "react";
 
 export const TableBody = props => (
-    <tbody> 
+    <tbody className="table table-striped"> 
       {props.children}
     </tbody>
 );
