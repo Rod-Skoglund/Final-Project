@@ -1,7 +1,7 @@
+import API from "../../utils/API";
 import React, { Component } from "react";
 import "./Form.css";
-var axios=require("axios");
-// import API from "../../utils/API";
+// var axios=require("axios");
 
 // var axios = require("axios");
 
@@ -44,48 +44,53 @@ class Form extends Component {
     } else {
       /////////////////////////////////AXIOS REQUEST TO EXpress server
       console.log("SignUp-Form.js - password = confirm password");
-      // API.saveUser({
-      //   "firstName": this.state.firstName,
-      //   "lastName": this.state.lastName,
-      //   "username":this.state.username,
-      //   "password":this.state.password
-      // })
-      alert(`Hello ${this.state.firstName} ${this.state.lastName}`);
-      axios.post("/signup",{
+      API.saveUser({
         "firstName": this.state.firstName,
         "lastName": this.state.lastName,
-        "username":this.state.username,
-        "password":this.state.password
-      // "email":this.state.email,
-      // "password":this.state.password
-      }).then(response => "/")
-        .catch(err=>console.log(err));
-    };
+        "username": this.state.username,
+        "password": this.state.password
+      })
+    //   alert(`Hello ${this.state.firstName} ${this.state.lastName}`);
+    //   axios.post("/signup",{
+    //     "firstName": this.state.firstName,
+    //     "lastName": this.state.lastName,
+    //     "username":this.state.username,
+    //     "password":this.state.password
+    //   // "email":this.state.email,
+    //   // "password":this.state.password
+    //   }).then(response => "/")
+    //     .catch(err=>console.log(err));
+    // };
 // {
 //       alert(`Hello ${this.state.firstName} ${this.state.lastName}`);
 //     }
 //     if(this.state.password===this.state.confirmPassword){
 //           /////////////////////////////////AXIOS REQUEST TO EXpress server
-//       console.log("SignUp-Form.js - password = confirm password");
-//       // API.saveUser({
-//       //   "firstName": this.state.firstName,
-//       //   "lastName": this.state.lastName,
-//       //   "username":this.state.username,
-//       //   "password":this.state.password
-//       // })
-//       axios.post("/signUp",{
-//         "firstName": this.state.firstName,
-//         "lastName": this.state.lastName,
-//         "username":this.state.username,
-//         "password":this.state.password
-//       // "email":this.state.email,
-//       // "password":this.state.password
-//       }).then(response => window.location.href = "/" + response)
-//       .catch(err=>console.log(err));
-//     }
-//     else{
-//       alert("Passwords must match!");
-//     }
+      // console.log("SignUp-Form.js - password = confirm password");
+      // API.saveUser({
+      //   "firstName": this.state.firstName,
+      //   "lastName": this.state.lastName,
+      //   "username":this.state.username,
+      //   "password":this.state.password
+      // });
+    //   axios.post("/signup",{
+    //     "firstName": this.state.firstName,
+    //     "lastName": this.state.lastName,
+    //     "username": this.state.username,
+    //     "password": this.state.password
+    //   // "email":this.state.email,
+    //   // "password":this.state.password
+    // // }).then(response => window.location.href = "/" + response)
+    //     }).then(function (response) {
+    //       console.log(response);
+    //     })
+    //     .catch(function (error) {
+    //       console.log(error);
+    //     });
+      }
+    // else {
+    //   alert("Passwords must match!");
+    // };
 
 //     // console.log("signUp/Form - firstName = " + this.state.firstName );
 //     // console.log("signUp/Form - lastName = " + this.state.lastName );
@@ -112,35 +117,35 @@ class Form extends Component {
             name="firstName"
             onChange={this.handleInputChange}
             type="String"
-            placeholder="First Name"
+            placeholder=" First Name"
           /><br/>
           <input
             value={this.state.lastName}
             name="lastName"
             onChange={this.handleInputChange}
             type="String"
-            placeholder="Last Name"
+            placeholder=" Last Name"
           /><br/>
           <input
             value={this.state.username}
             name="username"
             onChange={this.handleInputChange}
             type="String"
-            placeholder="User Name"
+            placeholder=" User Name"
           /><br/>
          <input
             value={this.state.password}
             name="password"
             onChange={this.handleInputChange}
             type="password"
-            placeholder="Password"
+            placeholder=" Password"
           /><br/>
           <input
             value={this.state.confirmPassword}
             name="confirmPassword"
             onChange={this.handleInputChange}
             type="password"
-            placeholder="confirmPassword Password"
+            placeholder=" confirmPassword"
           />
           <br/>
           <button onClick={this.handleFormSubmit}>Submit</button>

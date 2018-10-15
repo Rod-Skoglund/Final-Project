@@ -20,16 +20,14 @@ const usersController=require("../../controllers/usersController");
 
 router.route("/")//matches with /api/users
   .get(usersController.findAll);//sends all faction data
-// app.get("/api/hello",(req,res)=>{
-//   res.send({express:"hello from express"})
-// });
-router.route("/")//matches with /api/users
-  .post(usersController.create);//sends all faction data
-// app.get("/api/hello",(req,res)=>{
-//   res.send({express:"hello from express"})
-// });
-router.route("/api/hello")
-  .get((req,res)=>res.send({express:"hello from express"}))
-//router.route("/:")
+  // app.get("/api/hello",(req,res)=>{
+  //   res.send({express:"hello from express"})
+  // });
+  router.route("/")//matches with /api/users
+    .post(usersController.create);//sends all faction data
+
+  router.route("/api/hello")
+    .get((req,res)=>res.send({express:"hello from express"}))
+  //router.route("/:")
 
 module.exports=router;

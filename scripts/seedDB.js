@@ -64,10 +64,10 @@ db.Teams
 // Empty and initialize the User collection
 // ********************************************************************************
 const userSeed = [
-  { firstName: "Rod",     lastName: "Skoglund", username: "Dilbert",   passwordHash: "Dilbert",   active: "false" },
-  { firstName: "George",  lastName: "Carlin",   username: "Stuff",     passwordHash: "Stuff",     active: "false" },
-  { firstName: "Charlie", lastName: "Brown",    username: "Blockhead", passwordHash: "Blockhead", active: "false" },
-  { firstName: "Snoopy",  lastName: "Brown",    username: "Peanuts",   passwordHash: "Peanuts",   active: "false" }
+  { firstName: "Rod",     lastName: "Skoglund", username: "Dilbert",   password: "Dilbert",   active: "false" },
+  { firstName: "George",  lastName: "Carlin",   username: "Stuff",     password: "Stuff",     active: "false" },
+  { firstName: "Charlie", lastName: "Brown",    username: "Blockhead", password: "Blockhead", active: "false" },
+  { firstName: "Snoopy",  lastName: "Brown",    username: "Peanuts",   password: "Peanuts",   active: "false" }
 ]; // userSeed array
 
 db.User
