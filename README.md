@@ -38,8 +38,8 @@ Week 2 deliverables include:
 
 ### Screenshots of the Drop-Kick Picks App
 
-![Signin Page](/docs/signin.png)
-![Picks Page](/docs/picks.png)
-![Leaderboard Page](/docs/leaderboard.png)
+![Signin Page](./docs/signin.png)
+![Picks Page](./docs/picks.png)
+![Leaderboard Page](./docs/leaderboard.png)
 
 Enjoy :smiley: 
