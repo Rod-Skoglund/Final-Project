@@ -33,7 +33,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 // Routes
-require("./routes")(app, passport);
+// require("./routes")(app, passport);
 // require("./routes/htmlRoutes")(app);
 // //passport strats
 require("./config/passport/passport")(passport, models.user);

@@ -13,14 +13,18 @@ export default {
   savePick: function(pickData) {
     return axios.post("/api/pick", pickData);
   },
-  // Gets all Users
-  getUsers: function() {
-    return axios.get("/api/users");
-  },
-  // Gets all User with the given username
   getUser: function(username) {
     return axios.get("/api/users/" + username);
   },
+  // Gets all Users
+  // getUsers: function() {
+  //   return axios.get("/api/users");
+  // },
+  // Gets all User with the given username
+  // getUser: function(username) {
+  //   console.log("API - username = " + username);
+  //   return axios.get("/api/users");
+  // },
   // Saves a Users to the database
   saveUser: function(userData) {
     console.log("utils/API.js - userData = " + JSON.stringify(userData));

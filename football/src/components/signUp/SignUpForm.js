@@ -1,18 +1,19 @@
 import API from "../../utils/API";
 import React, { Component } from "react";
-import "./Form.css";
+import "./SignUpForm.css";
 // var axios=require("axios");
 
 // var axios = require("axios");
 
-class Form extends Component {
+class SignUpForm extends Component {
   // Setting the component's initial state
   state = {
     firstName: "",
     lastName: "",
     username: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
+    active: "false"
   };
 
   handleInputChange = event => {
@@ -42,66 +43,15 @@ class Form extends Component {
     } else if (this.state.password !== this.state.confirmPassword){
       alert("Passwords must match!");
     } else {
-      /////////////////////////////////AXIOS REQUEST TO EXpress server
-      console.log("SignUp-Form.js - password = confirm password");
+      console.log("SignUp-SignUpForm.js - password = confirm password");
       API.saveUser({
         "firstName": this.state.firstName,
         "lastName": this.state.lastName,
         "username": this.state.username,
-        "password": this.state.password
+        "password": this.state.password,
+        "active": this.active
       })
-    //   alert(`Hello ${this.state.firstName} ${this.state.lastName}`);
-    //   axios.post("/signup",{
-    //     "firstName": this.state.firstName,
-    //     "lastName": this.state.lastName,
-    //     "username":this.state.username,
-    //     "password":this.state.password
-    //   // "email":this.state.email,
-    //   // "password":this.state.password
-    //   }).then(response => "/")
-    //     .catch(err=>console.log(err));
-    // };
-// {
-//       alert(`Hello ${this.state.firstName} ${this.state.lastName}`);
-//     }
-//     if(this.state.password===this.state.confirmPassword){
-//           /////////////////////////////////AXIOS REQUEST TO EXpress server
-      // console.log("SignUp-Form.js - password = confirm password");
-      // API.saveUser({
-      //   "firstName": this.state.firstName,
-      //   "lastName": this.state.lastName,
-      //   "username":this.state.username,
-      //   "password":this.state.password
-      // });
-    //   axios.post("/signup",{
-    //     "firstName": this.state.firstName,
-    //     "lastName": this.state.lastName,
-    //     "username": this.state.username,
-    //     "password": this.state.password
-    //   // "email":this.state.email,
-    //   // "password":this.state.password
-    // // }).then(response => window.location.href = "/" + response)
-    //     }).then(function (response) {
-    //       console.log(response);
-    //     })
-    //     .catch(function (error) {
-    //       console.log(error);
-    //     });
-      }
-    // else {
-    //   alert("Passwords must match!");
-    // };
-
-//     // console.log("signUp/Form - firstName = " + this.state.firstName );
-//     // console.log("signUp/Form - lastName = " + this.state.lastName );
-//     // console.log("signUp/Form - username = " + this.state.username );
-//     // console.log("signUp/Form - password = " + this.state.password );
-//     /////////////////////////////////AXIOS REQUEST TO EXpress server
-//     // this.setState({
-//     //   email: "",
-//     //   password: "",
-//     //   confirmPassword: ""
-//     // });
+    }
   };
 
   render() {
@@ -109,9 +59,9 @@ class Form extends Component {
     return (
       <div>
         <p>
-          Sign up for the Drop-Kick Picks
+          Sign in for the Drop-Kick Picks
         </p>
-        <form className="form">
+        <form className="SignUpForm">
           <input
             value={this.state.firstName}
             name="firstName"
@@ -155,4 +105,4 @@ class Form extends Component {
   }
 }
 
-export default Form;
+export default SignUpForm;
