@@ -8,21 +8,21 @@ import { Col, Row, Container } from "../../components/Grid";
 // import { Input, TextArea, FormBtn } from "../../components/Form";
 import { Table, TableItem, TableHead } from "../../components/Table";
 
-class Leaderboard extends Component {
+class Picks extends Component {
     state = {
-        user: {}
+        pick: {}
     };
     
 
 
   componentDidMount() {
-    this.loadUsers();
+    this.loadPicks();
   }
 
-  loadUsers = () => {
-    API.getUsers()
+  loadPicks = () => {
+    API.getPicks()
       .then(res =>
-        this.setState({ users: res.data })
+        this.setState({ picks: res.data })
         // this.setState({ picks: res.data, title: "", author: "", synopsis: "" })
       )
       .catch(err => console.log(err));
@@ -43,11 +43,11 @@ class Leaderboard extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.user) {
-      API.saveUser({
-        user: this.state.user
+    if (this.state.pick) {
+      API.savePick({
+        pick: this.state.pick
       })
-        .then(res => this.loadUsers())
+        .then(res => this.loadPicks())
         .catch(err => console.log(err));
     }
   };
@@ -89,16 +89,16 @@ class Leaderboard extends Component {
           </Col> */}
           <Col size="md-6 sm-12">
             <Jumbotron>
-              <h1>Leaderboard</h1>
+              <h1>My Picks</h1>
             </Jumbotron>
-            {this.state.user.length ? (
+            {this.state.pick.length ? (
               <Table>
                 <TableHead />
-                {this.state.userss.map(user => (
-                  <TableItem key={user._id}>
-                    <Link to={"/users/" + user._id}>
+                {this.state.picks.map(pick => (
+                  <TableItem key={pick._id}>
+                    <Link to={"/picks/" + pick._id}>
                       <strong>
-                        {user.firstname + " " + user.lastname} 
+                        {pick.name}
                       </strong>
                     </Link>
                     {/* <DeleteBtn onClick={() => this.deleteBook(book._id)} /> */}
@@ -106,7 +106,7 @@ class Leaderboard extends Component {
                 ))}
               </Table>
             ) : (
-              <h3>No Users to Display</h3>
+              <h3>No Picks to Display</h3>
             )}
           </Col>
         </Row>
@@ -115,4 +115,4 @@ class Leaderboard extends Component {
   }
 }
 
-export default Leaderboard;
+export default Picks;
