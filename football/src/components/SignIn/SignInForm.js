@@ -43,10 +43,22 @@ class SignUpForm extends Component {
       .then(res => {
         console.log(res.data);
         console.log("res.data.password = " + res.data[0].password);
+
         if (this.state.password !== res.data[0].password) {
           alert("Incorrect Password");
         } else {
           console.log("SignIn-SignInForm.js - password = confirm password");
+          this.setState({
+            active = true
+          });
+          // API.saveUser({
+          //   "firstName": this.state.firstName,
+          //   "lastName": this.state.lastName,
+          //   "username": this.state.username,
+          //   "password": this.state.password,
+          //   "active": this.active
+          // })
+    
         }
     
       }).catch(err => console.log(err))
