@@ -5,6 +5,8 @@ import SignUp from "./pages/SignUp/signup";
 import SignIn from "./pages/SignIn/signin";
 // import NoMatch from "./pages/NoMatch";
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import SignIn from "./pages/SignIn";
+import './App.css';
 
 const ProtectedRoute = ({ component: Component, isLoggedIn, ...rest}) => (
   <Route { ...rest } render={props => {
