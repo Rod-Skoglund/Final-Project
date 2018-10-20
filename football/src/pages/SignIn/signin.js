@@ -1,48 +1,22 @@
-import React from "react";
+import React, { Component } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+import SignInForm from "../../components/SignIn";
+import PropTypes from 'prop-types'
 
-// const Nav = () => (
-//   <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-//     <a className="navbar-brand" href="/">
-//       React Reading List
-//     </a>
-//   </nav>
-// );
+class SignIn extends Component {
+  static propTypes ={
+    loginCheck: PropTypes.func
+  }
 
-// export default Nav;
-
-const SignIn = () => (
-  <div className="form-group">
-    <form id="signinemail" name="signin" method="post" action="signin">
-        <label for="email">Email Address</label>
-        <input class="text" id="signinemail2" name="email" type="text" /><br>
-        <label for="password">Password</label>
-        <input name="password" type="password" /><br>
-        <input class="btn" id="signinbtn" type="submit" value="Sign In" />
-    </form>
-  </div>
-
-)
-
-// <!-- Sign in form Section -->
-// <!DOCTYPE html>
-// <html>
- 
-
-// <head>
-//     <title>SIGN IN</title>
-// </head>
- 
-// <body>
-//     <div class="form-group">
-//         <form id="signinemail" name="signin" method="post" action="signin">
-//             <label for="email">Email Address</label>
-//             <input class="text" id="signinemail2" name="email" type="text" /><br>
-//             <label for="password">Password</label>
-//             <input name="password" type="password" /><br>
-//             <input class="btn" id="signinbtn" type="submit" value="Sign In" />
-//         </form>
-//     </div>
-// </body>
- 
-// </html>
-
+  render () {
+    console.log('singin.js props', this.props)
+    return (
+    <SignInForm loginCheck={ this.props.loginCheck }/>
+    )
+  }
+}
+// const SignIn = () => (
+//   <SignInForm loginCheck={ this.props.loginCheck }/>
+// )
+export default SignIn;
