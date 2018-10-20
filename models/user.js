@@ -8,8 +8,9 @@ const UserSchema = new Schema({
   lastName: { type: String },
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  active: { type: Boolean }
-});
+  active: { type: Boolean, default: false }
+}, { versionKey: false }
+);
 
 UserSchema.plugin(uniqueValidator);
 
