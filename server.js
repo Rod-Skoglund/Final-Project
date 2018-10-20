@@ -11,6 +11,7 @@ const session = require("express-session");
 // require("dotenv").load();
 
 const db = require("./models");
+const models = require("./models");
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -26,17 +27,16 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
+  app.use(express.static("football/build"));
 }
 
 app.use(routes);
 
-// const models = require("./models");
-// // Routes
-// require("./routes/apiRoutes")(app, passport);
+// Routes
+// require("./routes")(app, passport);
 // require("./routes/htmlRoutes")(app);
 // //passport strats
-// require("./config/passport/passport")(passport, models.user);
+require("./config/passport/passport")(passport, models.user);
 // //
 // const syncOptions = { force: false };
 
@@ -56,6 +56,11 @@ app.use(routes);
 //     );
 //   });
 // });
+
+// ******************************************************************************
+// Connect to the Mongo DB
+// ******************************************************************************
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/footballDB");
 
 // ******************************************************************************
 // Start Server 

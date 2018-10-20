@@ -117,23 +117,34 @@
 
 // export default Books;
 
-import React from 'react';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+// import React from 'react';
+// import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+// import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
-export default class Example extends React.Component {
-  render() {
-    return (
-      <Form>
-        <FormGroup>
-          <Label for="userName">  User Name: </Label>
-          <Input type="text" name="username" id="signinusername" placeholder="Enter User Name" />
-        </FormGroup>
-        <FormGroup>
-          <Label for="password">  Password: </Label>
-          <Input type="password" name="password" id="signinpassword" placeholder="Enter Password" />
-        </FormGroup>
-        <Button color="primary" id="signinbtn">Submit</Button>
-      </Form>
-    );
-  }
-}
+// export default class Example extends React.Component {
+//   render() {
+//     return (
+//       <Form>
+//         <FormGroup>
+//           <Label for="userName">  User Name: </Label>
+//           <Input type="text" name="username" id="signinusername" placeholder="Enter User Name" />
+//         </FormGroup>
+//         <FormGroup>
+//           <Label for="password">  Password: </Label>
+//           <Input type="password" name="password" id="signinpassword" placeholder="Enter Password" />
+//         </FormGroup>
+//         <Button color="primary" id="signinbtn">Submit</Button>
+//       </Form>
+//     );
+//   }
+// }
+
+import React from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+import SignInForm from "../../components/SignIn";
+
+const SignIn = () => (
+  <SignInForm/>
+)
+export default SignIn;

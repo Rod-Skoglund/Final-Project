@@ -94,7 +94,7 @@ module.exports = function(passport, user) {
             var data = {
               username: username,
 
-              passwordHash: userPassword,
+              password: userPassword,
 
               firstName: req.body.firstname,
 

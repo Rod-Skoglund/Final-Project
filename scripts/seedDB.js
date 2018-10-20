@@ -29,7 +29,7 @@ const teamsSeed = [
   { city: "Houston",       teamName: "Texans",     nickname: "HOU" },
   { city: "Indianapolis",  teamName: "Colts",      nickname: "IND" },
   { city: "Jacksonville",  teamName: "Jaguars",    nickname: "JAX" },
-  { city: "Kansas city",   teamName: "Chiefs",     nickname: "KC" },
+  { city: "Kansas City",   teamName: "Chiefs",     nickname: "KC" },
   { city: "Los Angeles",   teamName: "Rams",       nickname: "LAR" },
   { city: "Los Angeles",   teamName: "Chargers",   nickname: "LAC" },
   { city: "Miami",         teamName: "Dolphins",   nickname: "MIA" },
@@ -64,10 +64,17 @@ db.Teams
 // Empty and initialize the User collection
 // ********************************************************************************
 const userSeed = [
+<<<<<<< HEAD
   { firstName: "Rod",     lastName: "Skoglund", username: "Dilbert",   passwordHash: "Dilbert",   active: "false" },
   { firstName: "George",  lastName: "Carlin",   username: "Stuff",     passwordHash: "Stuff",     active: "false" },
   { firstName: "Charlie", lastName: "Brown",    username: "Blockhead", passwordHash: "Blockhead", active: "false" },
   { firstName: "Snoopy",  lastName: "Brown",    username: "Peanuts",   passwordHash: "Peanuts",   active: "false" }
+=======
+  { firstName: "Rod",     lastName: "Skoglund", username: "Dilbert",   password: "Dilbert",   active: "false" },
+  { firstName: "George",  lastName: "Carlin",   username: "Stuff",     password: "Stuff",     active: "false" },
+  { firstName: "Charlie", lastName: "Brown",    username: "Blockhead", password: "Blockhead", active: "false" },
+  { firstName: "Snoopy",  lastName: "Brown",    username: "Peanuts",   password: "Peanuts",   active: "false" }
+>>>>>>> dev
 ]; // userSeed array
 
 db.User
@@ -386,4 +393,9 @@ db.Games
 //   .catch(err => {
 //     console.error(err);
 //     process.exit(1);
+<<<<<<< HEAD
 //   });
+=======
+//   });
+
+>>>>>>> dev
