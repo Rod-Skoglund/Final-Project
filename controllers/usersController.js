@@ -5,12 +5,6 @@ module.exports = {
   findAll: function(req, res) {
     console.log("findAll - req.params.username = " + req.params.username);
     console.log("findAll - req.params = " + JSON.stringify(req.params));
-    // console.log("findAll - req = " + JSON.stringify(req));
-    // db.User
-    //   .find(req.query)
-    //   .sort({ date: -1 })
-    //   .then(dbModel => res.json(dbModel))
-    //   .catch(err => res.status(422).json(err));
     db.User
     .find({username: req.params.username})
     .then(dbModel => res.json(dbModel))
