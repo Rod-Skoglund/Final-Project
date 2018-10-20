@@ -1,15 +1,11 @@
 import React from "react";
-import "./Table.css";
+// import "./Table.css";
+
 
 export const Table = ({ children }) => {
   return (
-    <table className="table-overflow-container">
-      <thead className="table-group">
+    <table className="table table-striped table-bordered table-hover">
         {children}
-      </thead>
-      <tbody className="table-group">
-        {children}
-      </tbody>
     </table>
   );
 };
