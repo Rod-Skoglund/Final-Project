@@ -34,6 +34,12 @@ class Picks extends Component {
   //     .catch(err => console.log(err));
   // };
 
+  getScores = query => {
+    API.searchScores(query)
+      .then(res => this.setState({ result: res.data }))
+      .catch(err => console.log(err));
+  };
+
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -50,7 +56,12 @@ class Picks extends Component {
         .then(res => this.loadPicks())
         .catch(err => console.log(err));
     }
+    
+    this.searchScores(this.state.searchScores);
+
   };
+
+  
 
   render() {
 
@@ -79,7 +90,11 @@ class Picks extends Component {
           <Col size="md">
             <Jumbotron>
               <h1>Weekly Picks</h1>
+
+              <h6>Welcome: ________</h6>
             </Jumbotron>
+
+              {/*user welcome message  */}
 
             <div class="input-group mb-3">
               <div class="input-group-prepend">
