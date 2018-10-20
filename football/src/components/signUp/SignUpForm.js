@@ -13,7 +13,7 @@ class SignUpForm extends Component {
     username: "",
     password: "",
     confirmPassword: "",
-    active: "false"
+    active: false
   };
 
   handleInputChange = event => {

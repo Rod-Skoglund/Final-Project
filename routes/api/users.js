@@ -2,7 +2,7 @@ const router=require("express").Router();
 const usersController=require("../../controllers/usersController");
 
 router.route("/")//matches with /api/users
-  .get(usersController.findAll);//sends all faction data
+  .get(usersController.findOne);//sends all faction data
   // app.get("/api/hello",(req,res)=>{
   //   res.send({express:"hello from express"})
   // });
@@ -13,8 +13,11 @@ router.route("/")//matches with /api/users
 //     .get(usersController.findByUsername)
   //router.route("/:")
 router.route("/:username")
-.get(usersController.findAll);
-// .put(booksController.update)
-  // .delete(booksController.remove);
+.get(usersController.findOne)
+.put(usersController.update);
+    // .delete(booksController.remove);
+// router.route("/:_id")
+// .put(usersController.update);
+    
 
 module.exports=router;

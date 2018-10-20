@@ -18,16 +18,10 @@ export default {
   getUser: function(username) {
     return axios.get("/api/users/" + username);
   },
-  // Gets all Users
-  // getUsers: function() {
-  //   return axios.get("/api/users");
-  // },
-  // Gets all User with the given username
-  // getUser: function(username) {
-  //   console.log("API - username = " + username);
-  //   return axios.get("/api/users");
-  // },
-  // Saves a Users to the database
+  updateUser: function(userData) {
+    console.log("utils/API.js - userData = " + JSON.stringify(userData));
+    return axios.put("/api/users", userData);
+  },
   saveUser: function(userData) {
     console.log("utils/API.js - userData = " + JSON.stringify(userData));
     return axios.post("/api/users", userData);
