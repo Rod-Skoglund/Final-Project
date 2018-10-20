@@ -60,7 +60,7 @@ class SignInForm extends Component {
   };
 
   render() {
-    console.log("props = ", this.props)
+    // console.log("props = ", this.props)
     // Notice how each input has a `value`, `name`, and `onChange` prop
     return (
       <div>

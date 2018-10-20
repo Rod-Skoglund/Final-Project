@@ -5,7 +5,6 @@ import SignUp from "./pages/SignUp/signup";
 import SignIn from "./pages/SignIn/signin";
 // import NoMatch from "./pages/NoMatch";
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import SignIn from "./pages/SignIn";
 import './App.css';
 
 const ProtectedRoute = ({ component: Component, isLoggedIn, ...rest}) => (
@@ -28,7 +27,7 @@ class App extends Component {
   }
 
   loginCheck = (bool) => {
-    console.log("BOOL: ", bool);
+    console.log("App.js - BOOL: ", bool);
     this.setState({
       isLoggedIn: bool
     })

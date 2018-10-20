@@ -10,7 +10,7 @@ class SignIn extends Component {
   }
 
   render () {
-    console.log('singin.js props', this.props)
+    // console.log('singin.js props', this.props)
     return (
     <SignInForm loginCheck={ this.props.loginCheck }/>
     )
