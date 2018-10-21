@@ -1,7 +1,7 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-import SignUpForm from "../../components/SignUp";
+import SignUpForm from "../../components/signUp";
 
 const SignUp = () => (
   <SignUpForm/>

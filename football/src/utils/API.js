@@ -18,6 +18,9 @@ export default {
   getUser: function(username) {
     return axios.get("/api/users/" + username);
   },
+  getUsers: function() {
+    return axios.get("/api/users/");
+  },
   updateUser: function(userData) {
     console.log("utils/API.js - userData = " + JSON.stringify(userData));
     return axios.put("/api/users", userData);
@@ -25,7 +28,8 @@ export default {
   saveUser: function(userData) {
     console.log("utils/API.js - userData = " + JSON.stringify(userData));
     return axios.post("/api/users", userData);
-  }
+  },
+  
 
 };
 
