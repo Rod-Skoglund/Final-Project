@@ -1,6 +1,6 @@
 const router = require("express").Router();
 // const auth=require("./auth");
-const signupRoute = require("./signin");
+const signupRoute = require("./signup");
 const usersRoute = require("./users");
 // unit data routes
 
