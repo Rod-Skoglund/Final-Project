@@ -17,7 +17,7 @@ const Nav = () => (
           <a className="nav-link" href="/picks/:id">Weekly Picks</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="/signup">Login/Logout</a>
+          <a className="nav-link" href="/signin">Login/Logout</a>
         </li>
       </ul>
     </div>    

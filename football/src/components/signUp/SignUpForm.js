@@ -1,5 +1,6 @@
 import API from "../../utils/API";
 import React, { Component } from "react";
+import Jumbotron from "../../components/Jumbotron";
 import "./SignUpForm.css";
 // var axios=require("axios");
 
@@ -58,9 +59,9 @@ class SignUpForm extends Component {
     // Notice how each input has a `value`, `name`, and `onChange` prop
     return (
       <div>
-        <p>
-          Sign in for the Drop-Kick Picks
-        </p>
+        <Jumbotron>
+          <h1>Sign up for the Drop-Kick Picks</h1>
+        </Jumbotron>
         <form className="SignUpForm">
           <input
             value={this.state.firstName}
