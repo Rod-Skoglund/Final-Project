@@ -6,18 +6,24 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 // import { List, ListItem } from "../../components/List";
 // import { Input, TextArea, FormBtn } from "../../components/Form";
-import { Table, TableItem, TableHead } from "../../components/Table";
+import { Table, TableItem, TdItem, ThItem, TableHead, TableBody } from "../../components/Table";
+
+// const userData = [
+//   { id: "1", firstName: "Rod",     lastName: "Skoglund", username: "Dilbert",   passwordHash: "Dilbert",   active: "false" },
+//   { id: "2", firstName: "George",  lastName: "Carlin",   username: "Stuff",     passwordHash: "Stuff",     active: "false" },
+//   { id: "3", firstName: "Charlie", lastName: "Brown",    username: "Blockhead", passwordHash: "Blockhead", active: "false" },
+//   { id: "4", firstName: "Snoopy",  lastName: "Brown",    username: "Peanuts",   passwordHash: "Peanuts",   active: "false" }
+// ];  
+
 
 class Leaderboard extends Component {
     state = {
         user: {}
     };
     
-
-
   componentDidMount() {
     this.loadUsers();
-  }
+  };
 
   loadUsers = () => {
     API.getUsers()
@@ -53,66 +59,89 @@ class Leaderboard extends Component {
   };
 
   render() {
+
+    const userData = [
+      { id: "1", firstName: "Rod",     lastName: "Skoglund", username: "Dilbert",   passwordHash: "Dilbert",   score: "60" },
+      { id: "2", firstName: "George",  lastName: "Carlin",   username: "Stuff",     passwordHash: "Stuff",     score: "50" },
+      { id: "3", firstName: "Charlie", lastName: "Brown",    username: "Blockhead", passwordHash: "Blockhead", score: "40" },
+      { id: "4", firstName: "Snoopy",  lastName: "Brown",    username: "Peanuts",   passwordHash: "Peanuts",   score: "40" }
+    ];  
+
+    const tableHd = [
+      "User ID", 
+      "Name", 
+      "Score"
+    ]
+
     return (
       <Container fluid>
         <Row>
-          {/* <Col size="md-6">
-            <Jumbotron>
-              <h1>What Books Should I Read?</h1>
-            </Jumbotron>
-            <form>
-              <Input
-                value={this.state.title}
-                onChange={this.handleInputChange}
-                name="title"
-                placeholder="Title (required)"
-              />
-              <Input
-                value={this.state.author}
-                onChange={this.handleInputChange}
-                name="author"
-                placeholder="Author (required)"
-              />
-              <TextArea
-                value={this.state.synopsis}
-                onChange={this.handleInputChange}
-                name="synopsis"
-                placeholder="Synopsis (Optional)"
-              />
-              <FormBtn
-                disabled={!(this.state.author && this.state.title)}
-                onClick={this.handleFormSubmit}
-              >
-                Submit Book
-              </FormBtn>
-            </form>
-          </Col> */}
-          <Col size="md-6 sm-12">
+          <div className="col-3"></div>
+          <Col size="md">
             <Jumbotron>
               <h1>Leaderboard</h1>
             </Jumbotron>
-            {this.state.user.length ? (
+            {userData.length ? (
               <Table>
-                <TableHead />
-                {this.state.userss.map(user => (
-                  <TableItem key={user._id}>
-                    <Link to={"/users/" + user._id}>
-                      <strong>
-                        {user.firstname + " " + user.lastname} 
-                      </strong>
-                    </Link>
-                    {/* <DeleteBtn onClick={() => this.deleteBook(book._id)} /> */}
-                  </TableItem>
-                ))}
+                <TableHead>
+                  <tr>
+                    {tableHd.map(tableHd => (
+                      <ThItem key={tableHd} value={tableHd} />
+                    ))}
+                  </tr>
+                </TableHead>
+                <TableBody>
+                  {userData.map(userData => (
+                    <tr>
+                      <ThItem key={userData.id} value={userData.id} /> 
+                      <TdItem key={userData.id} value={userData.firstName + " " + userData.lastName} />
+                      <TdItem key={userData.id} value={userData.score} />
+                    </tr>
+                  ))}
+                </TableBody>
               </Table>
-            ) : (
+             ) : (
               <h3>No Users to Display</h3>
             )}
           </Col>
+          <div className="col-3"></div>
         </Row>
       </Container>
     );
   }
 }
+
+
+//   render() {
+//     return (
+//       <Container fluid>
+//         <Row>
+//           <Col size="md-6 sm-12">
+//             <Jumbotron>
+//               <h1>Leaderboard</h1>
+//             </Jumbotron>
+//             {this.state.user.length ? (
+//               <Table>
+//                 <TableHead />
+//                 {this.state.users.map(user => (
+//                   <TableItem key={user._id}>
+//                     <Link to={"/users/" + user._id}>
+//                       <strong>
+//                         {user.firstname + " " + user.lastname} 
+//                       </strong>
+//                     </Link>
+//                     {/* <DeleteBtn onClick={() => this.deleteBook(book._id)} /> */}
+//                   </TableItem>
+//                 ))}
+//               </Table>
+//             ) : (
+//               <h3>No Users to Display</h3>
+//             )}
+//           </Col>
+//         </Row>
+//       </Container>
+//     );
+//   }
+// }
 
 export default Leaderboard;

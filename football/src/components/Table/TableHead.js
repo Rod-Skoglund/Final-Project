@@ -1,9 +1,7 @@
 import React from "react";
 
 export const TableHead = props => (
-  <tr className="table-group-item">
-    <th>
+    <thead className="thead-dark"> 
       {props.children}
-    </th>
-  </tr>
+    </thead>
 );
