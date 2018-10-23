@@ -23,7 +23,7 @@ const Schema = mongoose.Schema;
 // });
 
 const GamesSchema = new Schema({
-  week: { type: Number },
+  week: { type: String },
   gameDate: { type: Date },
   home: { type: String },
   away: { type: String },

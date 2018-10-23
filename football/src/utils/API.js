@@ -4,8 +4,8 @@ const APIKEY = "1534a3f2-04d3-422e-92b3-b232fb";
 
 export default {
   // Gets all Picks
-  getPicks: function() {
-    return axios.get("/api/picks");
+  getPicks: function(week) {
+    return axios.get("/api/picks" + week);
   },
   // Gets the Picks with the given id
   getPick: function(id) {
@@ -13,7 +13,7 @@ export default {
   },
   // Saves a Picks to the database
   savePick: function(pickData) {
-    return axios.post("/api/pick", pickData);
+    return axios.post("/api/picks", pickData);
   },
   getUser: function(username) {
     return axios.get("/api/users/" + username);
@@ -29,7 +29,11 @@ export default {
     console.log("utils/API.js - userData = " + JSON.stringify(userData));
     return axios.post("/api/users", userData);
   },
-  
+  getGames: function(week) {
+    console.log("week: ", JSON.stringify(week));
+    return axios.get("/api/games/" + week);
+  },
+
 
 };
 
