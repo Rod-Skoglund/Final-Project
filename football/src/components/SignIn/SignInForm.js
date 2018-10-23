@@ -97,7 +97,7 @@ class SignInForm extends Component {
           <div className="col-3"></div>
         </Row>
       </Container>
-);
+    );
   }
 }
 

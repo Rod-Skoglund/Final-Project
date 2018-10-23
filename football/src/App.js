@@ -11,6 +11,7 @@ import './App.css';
 const ProtectedRoute = ({ component: Component, isLoggedIn, ...rest}) => (
   <Route { ...rest } render={props => {
     console.log(isLoggedIn);
+    console.log(props);
     return (
       isLoggedIn ? (
         <Component { ...props }/>
@@ -24,9 +25,10 @@ const ProtectedRoute = ({ component: Component, isLoggedIn, ...rest}) => (
 class App extends Component {
 
   state = {
-    isLoggedIn: true
+    isLoggedIn: false
   }
 
+componentDidMount() { console.log("App.js - Did Mount")}
   loginCheck = (bool) => {
     console.log("App.js - BOOL: ", bool);
     this.setState({
@@ -37,9 +39,9 @@ class App extends Component {
   render() {
     console.log(this.state.isLoggedIn);
     return (
-      <div>
-        <Nav />
-        <Router>
+      <Router>
+        <div>
+          <Nav isLoggedIn={ this.state.isLoggedIn }/>
           <Switch>
             <Route exact path="/" render={() => (
               this.state.isLoggedIn ? (
@@ -53,11 +55,11 @@ class App extends Component {
             <ProtectedRoute isLoggedIn={ this.state.isLoggedIn } exact path="/picks/:id" component={ Picks }/>
             <ProtectedRoute isLoggedIn={ this.state.isLoggedIn } exact path="/picks" component={ Picks }/>
             <Route exact path="/signup" component={SignUp} />
-            <Route exact path="/signin" component={SignIn} />
+            <Route isLoggedIn={ this.state.isLoggedIn } exact path="/signin" component={SignIn} />
             <Route component={NoMatch} />
           </Switch>
-        </Router>
-      </div>
+        </div>
+      </Router>
     );
   }
 }
