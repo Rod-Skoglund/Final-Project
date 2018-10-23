@@ -6,7 +6,7 @@ module.exports = {
     console.log("findAll - req.params.username = " + req.params.username);
     console.log("findAll - req.params = " + JSON.stringify(req.params));
     db.User
-    .find({username: req.params.username})
+    .find()
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
 },

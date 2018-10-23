@@ -2,7 +2,7 @@ const router=require("express").Router();
 const usersController=require("../../controllers/usersController");
 
 router.route("/")//matches with /api/users
-  .get(usersController.findOne);//sends all faction data
+  .get(usersController.findAll);//sends all faction data
   // app.get("/api/hello",(req,res)=>{
   //   res.send({express:"hello from express"})
   // });
