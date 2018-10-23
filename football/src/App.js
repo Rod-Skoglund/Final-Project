@@ -7,7 +7,6 @@ import Nav from "./components/Nav";
 import NoMatch from "./pages/NoMatch";
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import './App.css';
-import Nav from "./components/Nav";
 
 const ProtectedRoute = ({ component: Component, isLoggedIn, ...rest}) => (
   <Route { ...rest } render={props => {
@@ -26,7 +25,7 @@ const ProtectedRoute = ({ component: Component, isLoggedIn, ...rest}) => (
 class App extends Component {
 
   state = {
-    isLoggedIn: true
+    isLoggedIn: false
   }
 
 componentDidMount() { console.log("App.js - Did Mount")}
