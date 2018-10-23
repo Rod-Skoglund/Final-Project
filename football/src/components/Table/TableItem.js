@@ -1,12 +1,12 @@
 import React from "react";
 
-export const TableItem = props => (
-  <tr className="table table-striped">
-    <td>
-      {props.children}
-    </td>
-  </tr>
-);
+// export const TableItem = props => (
+//   <tr className="table table-striped">
+//     <td>
+//       {props.children}
+//     </td>
+//   </tr>
+// );
 
 export const ThItem = props => (
   <th scope="row" className="w-25">
