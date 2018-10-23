@@ -16,6 +16,7 @@ class SignIn extends Component {
     )
   }
 }
+
 // const SignIn = () => (
 //   <SignInForm loginCheck={ this.props.loginCheck }/>
 // )

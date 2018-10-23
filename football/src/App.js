@@ -3,7 +3,8 @@ import Picks from "./pages/MakePicks/Picks";
 import Leaderboard from "./pages/Leaderboard/leaderboard";
 import SignUp from "./pages/SignUp/signup";
 import SignIn from "./pages/SignIn/signin";
-// import NoMatch from "./pages/NoMatch";
+import Nav from "./components/Nav";
+import NoMatch from "./pages/NoMatch";
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import './App.css';
 import Nav from "./components/Nav";
@@ -11,6 +12,7 @@ import Nav from "./components/Nav";
 const ProtectedRoute = ({ component: Component, isLoggedIn, ...rest}) => (
   <Route { ...rest } render={props => {
     console.log(isLoggedIn);
+    console.log(props);
     return (
       isLoggedIn ? (
         <Component { ...props }/>
@@ -27,8 +29,9 @@ class App extends Component {
     isLoggedIn: true
   }
 
+componentDidMount() { console.log("App.js - Did Mount")}
   loginCheck = (bool) => {
-    console.log("BOOL: ", bool);
+    console.log("App.js - BOOL: ", bool);
     this.setState({
       isLoggedIn: bool
     })
@@ -39,7 +42,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Nav />
+          <Nav isLoggedIn={ this.state.isLoggedIn }/>
           <Switch>
             <Route exact path="/" render={() => (
               this.state.isLoggedIn ? (
@@ -52,8 +55,9 @@ class App extends Component {
             <ProtectedRoute isLoggedIn={ this.state.isLoggedIn } exact path="/leaderboard" component={ Leaderboard }/>
             <ProtectedRoute isLoggedIn={ this.state.isLoggedIn } exact path="/picks/:id" component={ Picks }/>
             <ProtectedRoute isLoggedIn={ this.state.isLoggedIn } exact path="/picks" component={ Picks }/>
-            <Route exact path="/signin" component={SignIn} />
-            {/* <Route component={NoMatch} /> */}
+            <Route exact path="/signup" component={SignUp} />
+            <Route isLoggedIn={ this.state.isLoggedIn } exact path="/signin" component={SignIn} />
+            <Route component={NoMatch} />
           </Switch>
         </div>
       </Router>

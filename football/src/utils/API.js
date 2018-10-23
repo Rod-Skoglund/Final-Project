@@ -1,6 +1,6 @@
 import axios from "axios";
-const BASEURL = "https://api.mysportsfeeds.com/v2.0/pull/nfl/2018-regular/games.json";
-const APIKEY = "1534a3f2-04d3-422e-92b3-b232fb";
+// const BASEURL = "https://api.mysportsfeeds.com/v2.0/pull/nfl/2018-regular/games.json";
+// const APIKEY = "1534a3f2-04d3-422e-92b3-b232fb";
 
 export default {
   // Gets all Picks

@@ -2,17 +2,17 @@
 var authController = require("../../controllers/authcontroller");
 module.exports = function(app, passport) {
   // app.get("/dashboard", isLoggedIn, planController.allPlans);
-  //signup stuff below
+  //signin stuff below
 
   // app.delete("/dashboard", isLoggedIn, planController.deletePlan);
 
-  app.get("/signup", authController.signup);
+  app.get("/signin", authController.signin);
   app.post(
-    "/signup",
-    passport.authenticate("local-signup", {
+    "/signin",
+    passport.authenticate("local-signin", {
       successRedirect: "/",
       failureFlash: true,
-      failureRedirect: "/signup"
+      failureRedirect: "/signin"
     })
   );
   app.get("/logout", authController.logout);
