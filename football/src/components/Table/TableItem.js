@@ -15,13 +15,13 @@ export const ThItem = props => (
 );
 
 export const TdItem = props => (
-  <td className="col" className="w-25">
+  <td className="col w-25">
     {props.value}
   </td>
 );
 
 export const TdButton = props => (
-  <td className="col" className="w-25">
+  <td className="col w-25">
     <button className="btn btn-primary">
       {props.value}
     </button>
