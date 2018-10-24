@@ -64,7 +64,7 @@ db.Teams
 // Empty and initialize the User collection
 // ********************************************************************************
 const userSeed = [
-  { firstName: "Rod",     lastName: "Skoglund", username: "Dilbert",   password: "Dilbert",   active: false },
+  { firstName: "Dilbert",     lastName: "Adams", username: "Dilbert",   password: "Dilbert",   active: false },
   { firstName: "George",  lastName: "Carlin",   username: "Stuff",     password: "Stuff",     active: false },
   { firstName: "Charlie", lastName: "Brown",    username: "Blockhead", password: "Blockhead", active: false },
   { firstName: "Snoopy",  lastName: "Brown",    username: "Peanuts",   password: "Peanuts",   active: false }
