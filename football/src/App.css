@@ -1,3 +1,18 @@
+body {
+  /* background-image: url('https://images.unsplash.com/photo-1533628635777-112b2239b1c7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=e8f8a90139ee123a94dcc36bc8f14b69&auto=format&fit=crop&w=400&q=60'); */
+  /* background-image: url('./images/FootballField.png'); */
+    /* The image used */
+    background-image: url('./images/FootballField.png');
+
+    /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .App {
   text-align: center;
 }
