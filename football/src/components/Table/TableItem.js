@@ -22,7 +22,7 @@ export const TdItem = props => (
 
 export const TdButton = props => (
   <td className="col w-25">
-    <button className="btn btn-primary">
+    <button onClick={() => props.clickHandler(props.value)} className="btn btn-primary">
       {props.value}
     </button>
   </td>

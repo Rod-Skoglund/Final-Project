@@ -4,7 +4,7 @@ const gamesController=require("../../controllers/gamesController");
 router.route("/") //matches with /api/picks/week
   .get(gamesController.findAllPicks);
   
-router.route("/:week")//matches with /api/games/week
+router.route("/")//matches with /api/games/week
   .post(gamesController.createPick);
 
 

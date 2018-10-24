@@ -17,6 +17,7 @@ class Picks extends Component {
   state = {
       pick: [],
       games: [],
+      users: [],
       week: ""
   };
     
@@ -64,14 +65,16 @@ class Picks extends Component {
     });
   };
 
-  makePick = event => {
+  makePick = value => {
     // event.preventDefault();
-    console.log(event);
-    console.log("event.target.value: ", event.target.value);
-    alert("I was clicked");
+    console.log("value: ", value);
+    // alert("I was clicked");
 
     API.savePick({
-      pick: event.target.value
+      confidence: 1,
+      userID: this.state.users._ID,
+      gamesID: this.state.games._ID,
+      pick: value
     })
       .then(res => this.loadPicks())
       .catch(err => console.log(err));
@@ -150,7 +153,7 @@ class Picks extends Component {
                         id={week.home}
                         value={week.home} 
                         // onChange={this.makePick}
-                        onChange={() => this.makePick(week.home)}
+                        clickHandler={this.makePick}
                         // onClick={(home) => this.makePick(home)}
                         // onClick={this.makePick.bind(this, week._id)}
                       />
@@ -158,7 +161,7 @@ class Picks extends Component {
                         key={week.away} 
                         value={week.away} 
                         // onChange={this.makePick}
-                        onChange={() => this.makePick(week.away)}
+                        clickHandler={this.makePick}
                         // onClick={(home) => this.makePick(home)}
                         // onClick={this.makePick.bind(this, week._id)}
                       />
