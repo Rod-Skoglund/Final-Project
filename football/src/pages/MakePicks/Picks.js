@@ -15,7 +15,7 @@ class Picks extends Component {
   }
   
   state = {
-      pick: [],
+      picks: [],
       games: [],
       users: [],
       week: ""
@@ -35,17 +35,31 @@ class Picks extends Component {
       .catch(err => console.log(err));
   };
 
-  loadGames = event => {
-    event.preventDefault();
+  loadGames = valuePassed => {
+    // event.preventDefault();
     // console.log(event.target);
-    console.log("event.target.value: ", event.target.value);
+    // console.log("event.target.value: ", event.target.value);
+    // console.log("Picks - valuePassed: ", valuePassed.target.value);
+
+
+    let value;
+
+    if(valuePassed.target){
+      value = valuePassed.target.value
+    } else {
+      value = valuePassed;
+    }
+    console.log("Picks - value: ", value);
 
     this.setState({ games: [] });
 
-    API.getGames(event.target.value)
+    API.getGames(value)
     .then(res => {
       console.log("res.data: ", res.data)
-      this.setState({ games: res.data });
+      this.setState({ 
+        games: res.data,
+        week: value 
+      });
       console.log(this.state.games)
         // console.log("games: ", games)
       })
@@ -65,18 +79,24 @@ class Picks extends Component {
     });
   };
 
-  makePick = value => {
+  makePick = (value, gameID) => {
     // event.preventDefault();
-    console.log("value: ", value);
-    // alert("I was clicked");
+    console.log("Picks - value: ", value);
+    console.log("Picks - gameID", gameID);
+    console.log("Picks - this.state.week: ", this.state.week);
+
+    // API.getUserID({
+    //   "active": this.active
+    // })
+    // .then(res)
+    // .catch(err => console.log(err))
 
     API.savePick({
       confidence: 1,
-      userID: this.state.users._ID,
-      gamesID: this.state.games._ID,
+      game: gameID,
       pick: value
     })
-      .then(res => this.loadPicks())
+      .then(res => this.loadGames(this.state.week))
       .catch(err => console.log(err));
     
     // this.loadGames();
@@ -144,14 +164,15 @@ class Picks extends Component {
                 </TableHead>
                 <TableBody>
                   {this.state.games.map(week => (
-                    <tr>
+                    <tr key={week._id}>
                       <ThItem key={week.week} value={week.week}>
                       </ThItem> 
 
                       <TdButton 
                         key={week.home} 
                         id={week.home}
-                        value={week.home} 
+                        value={week.home}
+                        gameID={week._id} 
                         // onChange={this.makePick}
                         clickHandler={this.makePick}
                         // onClick={(home) => this.makePick(home)}
@@ -159,7 +180,8 @@ class Picks extends Component {
                       />
                       <TdButton 
                         key={week.away} 
-                        value={week.away} 
+                        value={week.away}
+                        gameID={week._id}  
                         // onChange={this.makePick}
                         clickHandler={this.makePick}
                         // onClick={(home) => this.makePick(home)}

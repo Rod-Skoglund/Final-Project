@@ -7,6 +7,7 @@ module.exports = {
     console.log("findAll - req.params = ", JSON.stringify(req.params));
     db.Games
     .find({week: req.params.week})
+    .populate('pick')
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
   },
@@ -71,7 +72,7 @@ module.exports = {
     .catch(err => res.status(422).json(err));
   },
   createPick: function(req, res) {
-    console.log("gamesController.js - create - req.body = " + req.body);
+    console.log("gamesController.js - create - req.body = ", req.body);
     db.Picks
       .create(req.body)
       // .then(dbModel => res.json(dbModel))

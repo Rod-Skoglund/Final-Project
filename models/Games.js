@@ -22,15 +22,15 @@ const Schema = mongoose.Schema;
 
 // });
 
-const GamesSchema = new Schema({
+const GameSchema = new Schema({
   week: { type: String },
   gameDate: { type: Date },
   home: { type: String },
   away: { type: String },
-  winner: { type: String }
-
+  winner: { type: String },
+  picks: [{ type: Schema.Types.ObjectId, ref: 'Pick' }]
 });
 
-const Games = mongoose.model("Games", GamesSchema);
+const Game = mongoose.model("Games", GameSchema);
 
-module.exports = Games;
+module.exports = Game;

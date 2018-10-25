@@ -19,6 +19,9 @@ export default {
   getUser: function(username) {
     return axios.get("/api/users/" + username);
   },
+  // getUserID: function(ID) {
+  //   return axios.get("/api/users/" + username);
+  // },  
   getUsers: function() {
     return axios.get("/api/users/");
   },
