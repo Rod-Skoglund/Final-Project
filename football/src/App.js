@@ -4,6 +4,7 @@ import Leaderboard from "./pages/Leaderboard/leaderboard";
 import SignUp from "./pages/SignUp/signup";
 import SignIn from "./pages/SignIn/signin";
 import NoMatch from "./pages/NoMatch";
+import Nav from "./components/Nav";
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import './App.css';
 
