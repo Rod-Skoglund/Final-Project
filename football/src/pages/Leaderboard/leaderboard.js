@@ -61,7 +61,7 @@ class Leaderboard extends Component {
   render() {
 
     const userData = [
-      { id: "1", firstName: "Rod",     lastName: "Skoglund", username: "Dilbert",   passwordHash: "Dilbert",   score: "60" },
+      { id: "1", firstName: "Dilbert",     lastName: "Adams", username: "Dilbert",   passwordHash: "Dilbert",   score: "60" },
       { id: "2", firstName: "George",  lastName: "Carlin",   username: "Stuff",     passwordHash: "Stuff",     score: "50" },
       { id: "3", firstName: "Charlie", lastName: "Brown",    username: "Blockhead", passwordHash: "Blockhead", score: "40" },
       { id: "4", firstName: "Snoopy",  lastName: "Brown",    username: "Peanuts",   passwordHash: "Peanuts",   score: "40" }
