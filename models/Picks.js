@@ -1,26 +1,27 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const PicksSchema = new Schema({
+const PickSchema = new Schema({
   confidence: { type: Number },
   userID: {
     type: Schema.Types.ObjectId,
     // The ObjectIds will refer to the ids in the User model
     ref: "User"
   },
-  gamesID: {
+  game: {
     type: Schema.Types.ObjectId,
     // The ObjectIds will refer to the ids in the Games model
     ref: "Games"
   },
   pick: {
-    type: Schema.Types.ObjectId,
+    // type: Schema.Types.ObjectId,
     // The ObjectIds will refer to the ids in the Teams model
-    ref: "Teams"
+    // ref: "Teams"
+    type: String
   }
 
 });
 
-const Picks = mongoose.model("Picks", PicksSchema);
+const Pick = mongoose.model("Pick", PickSchema);
 
-module.exports = Picks;
+module.exports = Pick;
