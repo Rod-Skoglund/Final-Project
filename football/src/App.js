@@ -43,18 +43,25 @@ componentDidMount() { console.log("App.js - Did Mount")}
         <div>
           <Nav isLoggedIn={ this.state.isLoggedIn }/>
           <Switch>
-            <Route exact path="/" render={() => (
+          <Route exact path="/" render={() => (
               this.state.isLoggedIn ? (
                 <Leaderboard/>
               ) : (
                 <SignIn loginCheck={ this.loginCheck }/>
               )
             )}/>
+            <Route exact path="/signup" render={() => (
+              this.state.isLoggedIn ? (
+                <Leaderboard/>
+              ) : (
+                <SignUp loginCheck={ this.loginCheck }/>
+              )
+            )}/>
             {/* <ProtectedRoute isLoggedIn={ this.state.isLoggedIn } exact path="/login" loginCheck={ this.loginCheck } component={ Login }/> */}
             <ProtectedRoute isLoggedIn={ this.state.isLoggedIn } exact path="/leaderboard" component={ Leaderboard }/>
             <ProtectedRoute isLoggedIn={ this.state.isLoggedIn } exact path="/picks/:id" component={ Picks }/>
             <ProtectedRoute isLoggedIn={ this.state.isLoggedIn } exact path="/picks" component={ Picks }/>
-            <Route exact path="/signup" component={SignUp} />
+            {/* <Route isLoggedIn={ this.state.isLoggedIn } exact path="/signup" component={SignUp} /> */}
             <Route isLoggedIn={ this.state.isLoggedIn } exact path="/signin" component={SignIn} />
             <Route component={NoMatch} />
           </Switch>
