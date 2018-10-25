@@ -5,10 +5,6 @@ import "./SignInForm.css";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import PropTypes from "prop-types"
-// import App from "../../App";
-// var axios=require("axios");
-
-// var axios = require("axios");
 
 class SignInForm extends Component {
   static propTypes = {
@@ -69,33 +65,33 @@ class SignInForm extends Component {
         <div className="col-3"></div>
         <Col size="md">
           <div>
-          <Jumbotron>
-            <h1>Sign in for the Drop-Kick Picks</h1>
-          </Jumbotron>
-          <form className="SignInForm">
+            <Jumbotron>
+              <h1>Sign in for the Drop-Kick Picks</h1>
+            </Jumbotron>
+            <form className="SignInForm">
+              <input
+                value={this.state.username}
+                name="username"
+                onChange={this.handleInputChange}
+                type="String"
+                placeholder=" User Name"
+              /><br/>
             <input
-              value={this.state.username}
-              name="username"
-              onChange={this.handleInputChange}
-              type="String"
-              placeholder=" User Name"
-            /><br/>
-          <input
-              value={this.state.password}
-              name="password"
-              onChange={this.handleInputChange}
-              type="password"
-              placeholder=" Password"
-            />
-            <br/>
-            <button onClick={this.handleFormSubmit}>Submit</button>
-            <span>    </span>
-            <button><Link to = "/signUp">Create New Account</Link></button>
-          </form>
-        </div>
-      </Col>
-          <div className="col-3"></div>
-        </Row>
+                value={this.state.password}
+                name="password"
+                onChange={this.handleInputChange}
+                type="password"
+                placeholder=" Password"
+              />
+              <br/>
+              <button onClick={this.handleFormSubmit}>Submit</button>
+              <span>    </span>
+              <button><Link to = "/signUp">Create New Account</Link></button>
+            </form>
+          </div>
+        </Col>
+        <div className="col-3"></div>
+      </Row>
       </Container>
     );
   }

@@ -60,7 +60,10 @@ require("./config/passport/passport")(passport, models.user);
 // ******************************************************************************
 // Connect to the Mongo DB
 // ******************************************************************************
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/footballDB");
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/footballDB"
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/footballDB");
+mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI);
 
 // ******************************************************************************
 // Start Server 
