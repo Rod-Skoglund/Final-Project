@@ -2,9 +2,9 @@ import API from "../../utils/API";
 import React, { Component } from "react";
 import Jumbotron from "../../components/Jumbotron";
 import "./SignUpForm.css";
-// var axios=require("axios");
-
-// var axios = require("axios");
+import { Link, Redirect } from "react-router-dom";
+import { Col, Row, Container } from "../../components/Grid";
+import PropTypes from "prop-types"
 
 class SignUpForm extends Component {
   // Setting the component's initial state
@@ -51,57 +51,67 @@ class SignUpForm extends Component {
         "username": this.state.username,
         "password": this.state.password,
         "active": this.active
-      })
+      }).catch(err => console.log("SignUpForm - API.saveUser - err = ", err))
+    
+      this.props.loginCheck(true)
     }
   };
 
   render() {
     // Notice how each input has a `value`, `name`, and `onChange` prop
     return (
-      <div>
-        <Jumbotron>
-          <h1>Sign up for the Drop-Kick Picks</h1>
-        </Jumbotron>
-        <form className="SignUpForm">
-          <input
-            value={this.state.firstName}
-            name="firstName"
-            onChange={this.handleInputChange}
-            type="String"
-            placeholder=" First Name"
-          /><br/>
-          <input
-            value={this.state.lastName}
-            name="lastName"
-            onChange={this.handleInputChange}
-            type="String"
-            placeholder=" Last Name"
-          /><br/>
-          <input
-            value={this.state.username}
-            name="username"
-            onChange={this.handleInputChange}
-            type="String"
-            placeholder=" User Name"
-          /><br/>
-         <input
-            value={this.state.password}
-            name="password"
-            onChange={this.handleInputChange}
-            type="password"
-            placeholder=" Password"
-          /><br/>
-          <input
-            value={this.state.confirmPassword}
-            name="confirmPassword"
-            onChange={this.handleInputChange}
-            type="password"
-            placeholder=" confirmPassword"
-          />
-          <br/>
-          <button onClick={this.handleFormSubmit}>Submit</button>
-        </form>
-      </div>
+      <Container fluid>
+        <Row>
+          <div className="col-3"></div>
+          <Col size="md">
+            <div>
+              <Jumbotron>
+                <h1>Sign up for the Drop-Kick Picks</h1>
+              </Jumbotron>
+              <form className="SignUpForm">
+                <input
+                  value={this.state.firstName}
+                  name="firstName"
+                  onChange={this.handleInputChange}
+                  type="String"
+                  placeholder=" First Name"
+                /><br/>
+                <input
+                  value={this.state.lastName}
+                  name="lastName"
+                  onChange={this.handleInputChange}
+                  type="String"
+                  placeholder=" Last Name"
+                /><br/>
+                <input
+                  value={this.state.username}
+                  name="username"
+                  onChange={this.handleInputChange}
+                  type="String"
+                  placeholder=" User Name"
+                /><br/>
+              <input
+                  value={this.state.password}
+                  name="password"
+                  onChange={this.handleInputChange}
+                  type="password"
+                  placeholder=" Password"
+                /><br/>
+                <input
+                  value={this.state.confirmPassword}
+                  name="confirmPassword"
+                  onChange={this.handleInputChange}
+                  type="password"
+                  placeholder=" confirmPassword"
+                />
+                <br/>
+                <button onClick={this.handleFormSubmit}>Submit</button>
+              </form>
+            </div>
+          </Col>
+          <div className="col-3"></div>
+        </Row>
+      </Container>
     );
   }
 }
