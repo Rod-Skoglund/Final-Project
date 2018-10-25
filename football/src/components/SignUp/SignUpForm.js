@@ -51,9 +51,14 @@ class SignUpForm extends Component {
         "username": this.state.username,
         "password": this.state.password,
         "active": this.active
-      }).catch(err => console.log("SignUpForm - API.saveUser - err = ", err))
+      })
+      // .then(
+      //   console.log( "SignUpForm.js - API.saveUser.then"),
+      //   this.props.loginCheck(true) )
+      .catch(err => alert("Username already exists - Pleast select a unique username"))
+      // }).catch(err => console.log("SignUpForm - API.saveUser - err = ", err))
     
-      this.props.loginCheck(true)
+      // this.props.loginCheck(true)
     }
   };
 
