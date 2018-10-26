@@ -3,7 +3,7 @@ const db = require("../models");
 // Defining methods for the gamesController
 module.exports = {
   findAllGames: function(req, res) {
-    console.log("findAll - req.params = ", parseInt(req.params.week));
+    console.log("findAll - req.params = ", req.params.week);
     console.log("findAll - req.params = ", JSON.stringify(req.params));
     db.Games
     .find({week: req.params.week})
@@ -64,7 +64,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findAllPicks: function(req, res) {
-    console.log("findAll - req.params = ", parseInt(req.params.week));
+    console.log("findAll - req.params = ", req.params.week);
     console.log("findAll - req.params = ", JSON.stringify(req.params));
     db.Picks
     .find({week: req.params.week})
