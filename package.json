@@ -12,7 +12,7 @@
     "seed": "node scripts/seedDB.js",
     "install": "cd football && yarn install",
     "build": "cd football && yarn build",
-    "heroku-postbuild": "seedDB.js && yarn build",
+    "heroku-postbuild": "node scripts/seedDB.js && yarn build",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
   "author": "",
