@@ -2,11 +2,11 @@ import React, { Component } from "react";
 // import DeleteBtn from "../../components/DeleteBtn";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 // import { List, ListItem } from "../../components/List";
 // import { Input, TextArea, FormBtn } from "../../components/Form";
-import { Table, TdItem, ThItem, TdButton, TableHead, TableBody, SelectPoints } from "../../components/Table";
+import { Table, TdItem, ThItem, TdButton, TableHead, TableBody } from "../../components/Table";
 import PropTypes from "prop-types"
 
 class Picks extends Component {
@@ -15,8 +15,9 @@ class Picks extends Component {
   }
   
   state = {
-      // pick: {},
+      picks: [],
       games: [],
+      users: [],
       week: ""
   };
     
@@ -34,15 +35,31 @@ class Picks extends Component {
       .catch(err => console.log(err));
   };
 
-  loadGames = event => {
-    event.preventDefault();
+  loadGames = valuePassed => {
+    // event.preventDefault();
     // console.log(event.target);
-    console.log("event.target.value: ", event.target.value);
+    // console.log("event.target.value: ", event.target.value);
+    // console.log("Picks - valuePassed: ", valuePassed.target.value);
 
-    API.getGames(event.target.value)
+
+    let value;
+
+    if(valuePassed.target){
+      value = valuePassed.target.value
+    } else {
+      value = valuePassed;
+    }
+    console.log("Picks - value: ", value);
+
+    this.setState({ games: [] });
+
+    API.getGames(value)
     .then(res => {
       console.log("res.data: ", res.data)
-      this.setState({ games: res.data });
+      this.setState({ 
+        games: res.data,
+        week: value 
+      });
       console.log(this.state.games)
         // console.log("games: ", games)
       })
@@ -62,42 +79,50 @@ class Picks extends Component {
     });
   };
 
-  handleFormSubmit = event => {
-    event.preventDefault();
-    if (this.state.games) {
-      API.savePick({
-        pick: this.state.pick
-      })
-        .then(res => this.loadPicks())
-        .catch(err => console.log(err));
-    }
+  makePick = (value, gameID) => {
+    // event.preventDefault();
+    console.log("Picks - value: ", value);
+    console.log("Picks - gameID", gameID);
+    console.log("Picks - this.state.week: ", this.state.week);
+
+    // API.getUserID({
+    //   "active": this.active
+    // })
+    // .then(res)
+    // .catch(err => console.log(err))
+
+    API.savePick({
+      confidence: 1,
+      game: gameID,
+      pick: value
+    })
+      .then(res => this.loadGames(this.state.week))
+      .catch(err => console.log(err));
     
-    this.loadGames();
+    // this.loadGames();
 
   };
 
-  
 
   render() {
 
-    const pickData = [
-      { id: "1", homeTeam: "Chiefs", awayTeam: "New England", pick: "Chiefs" },
-      { id: "2", homeTeam: "Chiefs", awayTeam: "Jaguars",   pick: "Chiefs" },
-      { id: "3", homeTeam: "Chiefs", awayTeam: "Broncos",   pick: "Chiefs" },
-      { id: "4", homeTeam: "Chiefs", awayTeam: "Chargers",  pick: "Chiefs" }
-    ];  
+    // const pickData = [
+    //   { id: "1", homeTeam: "Chiefs", awayTeam: "New England", pick: "Chiefs" },
+    //   { id: "2", homeTeam: "Chiefs", awayTeam: "Jaguars",   pick: "Chiefs" },
+    //   { id: "3", homeTeam: "Chiefs", awayTeam: "Broncos",   pick: "Chiefs" },
+    //   { id: "4", homeTeam: "Chiefs", awayTeam: "Chargers",  pick: "Chiefs" }
+    // ];  
 
     const tableHd = [
       "Game Week", 
       "Home Team", 
       "Away Team", 
       "Pick"
-      // "Winner"
     ]
 
     const weeks = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
 
-    const gameNumber = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+    // const gameNumber = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
 
 
@@ -111,8 +136,6 @@ class Picks extends Component {
 
               <h6>Welcome: ________</h6>
             </Jumbotron>
-
-              {/*user welcome message  */}
 
             <div className="input-group mb-3">
               <div className="input-group-prepend">
@@ -141,47 +164,34 @@ class Picks extends Component {
                 </TableHead>
                 <TableBody>
                   {this.state.games.map(week => (
-                    <tr>
-                      <ThItem key={week._id} value={week.week}>
-                        {/* <SelectPoints key={week} onChange={this.handleInputChange}>
-                          {week}
-                        </SelectPoints> */}
+                    <tr key={week._id}>
+                      <ThItem key={week.week} value={week.week}>
                       </ThItem> 
 
-                      {/* <TdItem 
-                        key={pickData.id} 
-                        value={pickData.homeTeam} 
-                      />
-                      <TdItem 
-                        key={pickData.id} 
-                        value={pickData.awayTeam} 
-                      /> */}
-
                       <TdButton 
-                        key={week._id} 
-                        value={week.home} 
-                        onClick={this.handleFormSubmit}
+                        key={week.home} 
+                        id={week.home}
+                        value={week.home}
+                        gameID={week._id} 
+                        // onChange={this.makePick}
+                        clickHandler={this.makePick}
+                        // onClick={(home) => this.makePick(home)}
+                        // onClick={this.makePick.bind(this, week._id)}
                       />
                       <TdButton 
-                        key={week._id} 
-                        value={week.away} 
-                        onClick={this.handleFormSubmit}
+                        key={week.away} 
+                        value={week.away}
+                        gameID={week._id}  
+                        // onChange={this.makePick}
+                        clickHandler={this.makePick}
+                        // onClick={(home) => this.makePick(home)}
+                        // onClick={this.makePick.bind(this, week._id)}
                       />
 
-                      {/* <TdItem 
-                        key={pickData.id} 
-                        value={pickData.pick} 
-                      /> */}
-
                       <TdItem 
-                        key={week._id} 
+                        key={week.pick} 
                         value={week.pick}
                       />
-
-                      {/* <TdItem 
-                        key={week._id} 
-                        value={week._id.winner}
-                      /> */}
 
                     </tr>
                   ))}
@@ -198,156 +208,5 @@ class Picks extends Component {
   }
 }
 
-
-// ----
-// Old render code
-// ----
-// render() {
-
-//   const pickData = [
-//     { id: "1", homeTeam: "Chiefs", awayTeam: "New England", pick: "Chiefs" },
-//     { id: "2", homeTeam: "Chiefs", awayTeam: "Jaguars",   pick: "Chiefs" },
-//     { id: "3", homeTeam: "Chiefs", awayTeam: "Broncos",   pick: "Chiefs" },
-//     { id: "4", homeTeam: "Chiefs", awayTeam: "Chargers",  pick: "Chiefs" }
-//   ];  
-
-//   const tableHd = [
-//     "Game", 
-//     "Home Team", 
-//     "Away Team", 
-//     "Pick",
-//     "Winner"
-//   ]
-
-//   const weeks = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
-
-//   // const games = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
-
-//   return (
-//     <Container fluid>
-//       <Row>
-//         <div className="col-3"></div>
-//         <Col size="md">
-//           <Jumbotron>
-//             <h1>Weekly Picks</h1>
-
-//             <h6>Welcome: ________</h6>
-//           </Jumbotron>
-
-//             {/*user welcome message  */}
-
-//           <div class="input-group mb-3">
-//             <div class="input-group-prepend">
-//               <label class="input-group-text" for="inputGroupSelect01">Game Week:</label>
-//             </div>
-//             <select class="custom-select" id="inputGroupSelect01">
-//               <option selected>Choose...</option>
-//               {weeks.map(weeks => (
-//                 <option value={weeks} onChange={this.handleInputChange}>
-//                   {weeks}
-//                 </option>
-//               ))}
-//             </select>
-//           </div>
-
-//           {pickData.length ? (
-//             <Table>
-//               <TableHead>
-//                 <tr>
-//                   {tableHd.map(tableHd => (
-//                     <ThItem key={tableHd} value={tableHd} />
-//                   ))}
-//                 </tr>
-//               </TableHead>
-//               <TableBody>
-//                 {pickData.map(pickData => (
-//                   <tr>
-//                     <ThItem key={pickData.id} value={pickData.id}>
-//                       <SelectPoints key={pickData.id} onChange={this.handleInputChange}>
-//                         {pickData.id}
-//                       </SelectPoints>
-//                     </ThItem> 
-
-//                     {/* <TdItem 
-//                       key={pickData.id} 
-//                       value={pickData.homeTeam} 
-//                     />
-//                     <TdItem 
-//                       key={pickData.id} 
-//                       value={pickData.awayTeam} 
-//                     /> */}
-
-//                     <TdButton 
-//                       key={pickData.id} 
-//                       value={pickData.homeTeam} 
-//                       onClick={this.handleFormSubmit}
-//                     />
-//                     <TdButton 
-//                       key={pickData.id} 
-//                       value={pickData.awayTeam} 
-//                       onClick={this.handleFormSubmit}
-//                     />
-
-//                     {/* <TdItem 
-//                       key={pickData.id} 
-//                       value={pickData.pick} 
-//                     /> */}
-
-//                     <TdItem 
-//                       key={pickData.id} 
-//                       value={pickData.pick}
-//                     />
-
-//                   </tr>
-//                 ))}
-//               </TableBody>
-//             </Table>
-//           ) : (
-//             <h3>No Users to Display</h3>
-//           )}
-//         </Col>
-//         <div className="col-3"></div>
-//       </Row>
-//     </Container>
-//   );
-// }
-// }
-
-
-
-// -------------
-// Older render code
-// -------------
-//   render() {
-//     return (
-//       <Container fluid>
-//         <Row>
-//           <Col size="md-6 sm-12">
-//             <Jumbotron>
-//               <h1>My Picks</h1>
-//             </Jumbotron>
-//             {this.state.pick.length ? (
-//               <Table>
-//                 <TableHead />
-//                 {this.state.picks.map(pick => (
-//                   <TableItem key={pick._id}>
-//                     <Link to={"/picks/" + pick._id}>
-//                       <strong>
-//                         {pick.name}
-//                       </strong>
-//                     </Link>
-//                     {/* <DeleteBtn onClick={() => this.deleteBook(book._id)} /> */}
-//                   </TableItem>
-//                 ))}
-//               </Table>
-//             ) : (
-//               <h3>No Picks to Display</h3>
-//             )}
-//           </Col>
-//         </Row>
-//       </Container>
-//     );
-//   }
-// }
 
 export default Picks;

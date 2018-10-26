@@ -3,6 +3,8 @@ const router = require("express").Router();
 const signupRoute = require("./signup");
 const usersRoute = require("./users");
 const gamesRoute = require("./games");
+const picksRoute = require("./picks");
+
 // unit data routes
 
 // module.exports={
@@ -11,6 +13,7 @@ const gamesRoute = require("./games");
     router.use("/signup", signupRoute)
     router.use("/users", usersRoute);
     router.use("/games", gamesRoute);
+    router.use("/picks", picksRoute);
     
   //);
 // 
